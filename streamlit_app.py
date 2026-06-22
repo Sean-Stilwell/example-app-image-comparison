@@ -3,7 +3,11 @@ import streamlit as st
 from streamlit_image_comparison import image_comparison
 import cv2
 
-AZURE_SAS_URI = os.environ.get("BLOB_SAS_TOKEN")
+AZURE_SAS_URI = os.environ.get("SAS_TOKEN")
+
+if not AZURE_SAS_URI:
+    st.error("Please set the SAS_TOKEN environment variable to run this app.")
+    st.stop()
 
 base_uri, token = AZURE_SAS_URI.split("?", 1)
 
