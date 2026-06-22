@@ -17,9 +17,8 @@ st.set_page_config("Webb Space Telescope vs Hubble Telescope", "🔭")
 
 st.header("J. Webb Space Telescope vs Hubble Telescope")
 
-st.write("")
-"This is a reproduction of the fantastic [WebbCompare](https://www.webbcompare.com/index.html) app by [John Christensen](https://twitter.com/JohnnyC1423). It's built in Streamlit and takes only 10 lines of Python code. If you like this app, please star [John's original repo](https://github.com/JohnEdChristensen/WebbCompare)!"
-st.write("")
+st.write("This is the [Streamlit example application](https://github.com/streamlit/example-app-image-comparison) refactored to run on the Federal Science DataHub using images in the FSDH Azure Blob Storage.")
+st.write("The code for this version can be found on [GitHub](https://github.com/Sean-Stilwell/example-app-image-comparison).")
 
 st.markdown("### Southern Nebula")
 try:
