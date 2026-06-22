@@ -1,5 +1,11 @@
 [theme]
 base = "dark"
 
+[browser]
+gatherUsageStats = false
+
 [server]
 baseUrlPath = "/app/ATF2/"
+enableStaticServing = true
+enableCORS=false
+enableXsrfProtection=false
