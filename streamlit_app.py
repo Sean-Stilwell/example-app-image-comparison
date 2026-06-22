@@ -2,6 +2,7 @@ import os
 import streamlit as st
 from streamlit_image_comparison import image_comparison
 import cv2
+from translations import get_text
 
 AZURE_SAS_URI = os.environ.get("SAS_TOKEN")
 
@@ -10,17 +11,34 @@ try:
     if not base_uri or not token:
         raise ValueError
 except Exception as e:
-    st.error("Invalid SAS_TOKEN format. Please ensure it is in the format 'https://<storage_account>.blob.core.windows.net/<container>?<sas_token>'.")
+    st.error(get_text("error_sas_token", st.session_state.get("language", "en")))
     st.stop()
 
-st.set_page_config("Webb Space Telescope vs Hubble Telescope", "🔭")
+# Initialize language in session state
+if "language" not in st.session_state:
+    st.session_state.language = "en"
+    
+def toggleLanguage():
+    if st.session_state.language == "en":
+        st.session_state.language = "fr"
+    else:
+        st.session_state.language = "en"
+        
+st.button(get_text("language", st.session_state.language), on_click=toggleLanguage, type="primary")
 
-st.header("J. Webb Space Telescope vs Hubble Telescope")
+# Set page config with translated title
+st.set_page_config(get_text("page_title", st.session_state.language), "🔭")
 
-st.write("This is the [Streamlit example application](https://github.com/streamlit/example-app-image-comparison) refactored to run on the Federal Science DataHub using images in the FSDH Azure Blob Storage.")
-st.write("The code for this version can be found on [GitHub](https://github.com/Sean-Stilwell/example-app-image-comparison).")
+# Get translation function for current language
+def t(key: str) -> str:
+    return get_text(key, st.session_state.language)
 
-st.markdown("### Southern Nebula")
+st.header(t("header"))
+
+st.write(t("intro_line1"))
+st.write(t("intro_line2"))
+
+st.markdown(f"### {t('southern_nebula')}")
 try:
     image_comparison(
         img1=f"{base_uri}/hubble/southern_nebula_700.jpg?{token}",
@@ -29,9 +47,9 @@ try:
         label2="Webb",
     )
 except Exception as e:
-    st.error("This image failed to load. Verify the file exists in the Azure Blob Storage")
+    st.error(t("error_image_load"))
 
-st.markdown("### Galaxy Cluster SMACS 0723")
+st.markdown(f"### {t('galaxy_cluster')}")
 try:
     image_comparison(
         img1=f"{base_uri}/hubble/deep_field_700.jpg?{token}",
@@ -40,9 +58,9 @@ try:
         label2="Webb",
     )
 except Exception as e:
-    st.error("This image failed to load. Verify the file exists in the Azure Blob Storage")
+    st.error(t("error_image_load"))
 
-st.markdown("### Carina Nebula")
+st.markdown(f"### {t('carina_nebula')}")
 try:
     image_comparison(
         img1=f"{base_uri}/hubble/carina_2800.png?{token}",
@@ -51,9 +69,9 @@ try:
         label2="Webb",
     )
 except Exception as e:
-    st.error("This image failed to load. Verify the file exists in the Azure Blob Storage")
+    st.error(t("error_image_load"))
 
-st.markdown("### Stephan's Quintet")
+st.markdown(f"### {t('stephans_quintet')}")
 try:
     image_comparison(
         img1=f"{base_uri}/hubble/stephans_quintet_2800.jpg?{token}",
@@ -62,4 +80,4 @@ try:
         label2="Webb",
     )
 except Exception as e:
-    st.error("This image failed to load. Verify the file exists in the Azure Blob Storage")
+    st.error(t("error_image_load"))
