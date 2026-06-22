@@ -21,7 +21,7 @@ TRANSLATIONS = {
     "fr": {
         "page_title": "Télescope Spatial Webb vs Télescope Hubble",
         "header": "Télescope Spatial J. Webb vs Télescope Hubble",
-        "intro_line1": "Ceci est l'[application exemple Streamlit](https://github.com/streamlit/example-app-image-comparison) refactorisée pour s'exécuter sur le Federal Science DataHub en utilisant des images du Azure Blob Storage du FSDH.",
+        "intro_line1": "Ceci est l'[application exemple Streamlit](https://github.com/streamlit/example-app-image-comparison) refactorisée pour s'exécuter sur la Plateforme fédérale de données scientifiques en utilisant des images du stockage Azure Blob de la PFDS.",
         "intro_line2": "Le code de cette version se trouve sur [GitHub](https://github.com/Sean-Stilwell/example-app-image-comparison).",
         "southern_nebula": "Nébuleuse australe",
         "galaxy_cluster": "Amas de galaxies SMACS 0723",
