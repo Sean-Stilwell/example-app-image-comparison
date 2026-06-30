@@ -6,7 +6,7 @@ primaryColor = "navy"
 gatherUsageStats = false
 
 [server]
-baseUrlPath = "/app/ATF2/"
+baseUrlPath = "/app/DW1/"
 enableStaticServing = true
 enableCORS=false
 enableXsrfProtection=false
