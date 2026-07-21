@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   web:
-    image: ghcr.io/sean-stilwell/example-app-image-comparison:latest
+    image: ghcr.io/ssc-sp/fsdh-demo-app-streamlit:latest
     ports:
       - "80:8501"
     environment:
