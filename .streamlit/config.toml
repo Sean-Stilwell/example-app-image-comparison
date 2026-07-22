@@ -6,7 +6,7 @@ primaryColor = "navy"
 gatherUsageStats = false
 
 [server]
-baseUrlPath = "/app/DW1/"
+baseUrlPath = "/app/DW1PRE/"
 enableStaticServing = true
 enableCORS=false
 enableXsrfProtection=false
