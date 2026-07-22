@@ -4,7 +4,7 @@ from streamlit_image_comparison import image_comparison
 import cv2
 from translations import get_text
 
-AZURE_SAS_URI = os.environ.get("SAS_TOKEN")
+AZURE_SAS_URI = os.environ.get("BLOB_SAS_TOKEN")
 
 try:
     base_uri, token = AZURE_SAS_URI.split("?", 1)
