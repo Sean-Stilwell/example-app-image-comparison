@@ -4,7 +4,10 @@ from streamlit_image_comparison import image_comparison
 import cv2
 from translations import get_text
 
-AZURE_SAS_URI = os.environ.get("SAS_TOKEN")
+AZURE_SAS_TOKEN = os.environ.get("BLOB_SAS_TOKEN")
+AZURE_STORAGE_ACCOUNT = os.environ.get("BLOB_ACCOUNT_NAME")
+AZURE_CONTAINER_NAME = os.environ.get("BLOB_CONTAINER_NAME")
+AZURE_SAS_URI = f"https://{AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/{AZURE_CONTAINER_NAME}?{AZURE_SAS_TOKEN}" if AZURE_SAS_TOKEN and AZURE_STORAGE_ACCOUNT and AZURE_CONTAINER_NAME else None
 
 try:
     base_uri, token = AZURE_SAS_URI.split("?", 1)
