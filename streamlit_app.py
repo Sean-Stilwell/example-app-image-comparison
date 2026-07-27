@@ -1,14 +1,13 @@
 import os
 import streamlit as st
 from streamlit_image_comparison import image_comparison
-import cv2
 from translations import get_text
 
-AZURE_SAS_URI = os.environ.get("SAS_TOKEN")
+AZURE_SAS_TOKEN = os.environ.get("BLOB_SAS_TOKEN") # e.g. ?sv=<token>
+AZURE_SAS_URI = os.environ.get("BLOB_ACCOUNT_URL") # e.g. https://<account_name>.blob.core.windows.net
 
 try:
-    base_uri, token = AZURE_SAS_URI.split("?", 1)
-    if not base_uri or not token:
+    if not AZURE_SAS_URI or not AZURE_SAS_TOKEN:
         raise ValueError
 except Exception as e:
     st.error(get_text("error_sas_token", st.session_state.get("language", "en")))
@@ -41,8 +40,8 @@ st.write(t("intro_line2"))
 st.markdown(f"### {t('southern_nebula')}")
 try:
     image_comparison(
-        img1=f"{base_uri}/hubble/southern_nebula_700.jpg?{token}",
-        img2=f"{base_uri}/webb/southern_nebula_700.jpg?{token}",
+        img1=f"{AZURE_SAS_URI}/datahub/hubble/southern_nebula_700.jpg{AZURE_SAS_TOKEN}",
+        img2=f"{AZURE_SAS_URI}/datahub/webb/southern_nebula_700.jpg{AZURE_SAS_TOKEN}",
         label1="Hubble",
         label2="Webb",
     )
@@ -52,8 +51,8 @@ except Exception as e:
 st.markdown(f"### {t('galaxy_cluster')}")
 try:
     image_comparison(
-        img1=f"{base_uri}/hubble/deep_field_700.jpg?{token}",
-        img2=f"{base_uri}/webb/deep_field_700.jpg?{token}",
+        img1=f"{AZURE_SAS_URI}/datahub/hubble/deep_field_700.jpg{AZURE_SAS_TOKEN}",
+        img2=f"{AZURE_SAS_URI}/datahub/webb/deep_field_700.jpg{AZURE_SAS_TOKEN}",
         label1="Hubble",
         label2="Webb",
     )
@@ -63,8 +62,8 @@ except Exception as e:
 st.markdown(f"### {t('carina_nebula')}")
 try:
     image_comparison(
-        img1=f"{base_uri}/hubble/carina_2800.png?{token}",
-        img2=f"{base_uri}/webb/carina_2800.jpg?{token}",
+        img1=f"{AZURE_SAS_URI}/datahub/hubble/carina_2800.png{AZURE_SAS_TOKEN}",
+        img2=f"{AZURE_SAS_URI}/datahub/webb/carina_2800.jpg{AZURE_SAS_TOKEN}",
         label1="Hubble",
         label2="Webb",
     )
@@ -74,8 +73,8 @@ except Exception as e:
 st.markdown(f"### {t('stephans_quintet')}")
 try:
     image_comparison(
-        img1=f"{base_uri}/hubble/stephans_quintet_2800.jpg?{token}",
-        img2=f"{base_uri}/webb/stephans_quintet_2800.jpg?{token}",
+        img1=f"{AZURE_SAS_URI}/datahub/hubble/stephans_quintet_2800.jpg{AZURE_SAS_TOKEN}",
+        img2=f"{AZURE_SAS_URI}/datahub/webb/stephans_quintet_2800.jpg{AZURE_SAS_TOKEN}",
         label1="Hubble",
         label2="Webb",
     )
